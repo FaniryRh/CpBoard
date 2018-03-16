@@ -21,15 +21,26 @@ class ProfileController extends Controller
     	$file = $request->file('pic');
     	if ($file){
     	$filename = $file->getClientOriginalName();
-    	// $path = url('profilpic');
+		$size = $file->getClientSize();
+
+		$exist = 0;
+		if($size > 2000 || !$size){
     	$file->move('profilpic', $filename);
 
     	$user_id = Auth::user()->id;
     	Storage::delete(url('profilpic/').Auth::user()->photo);
 
     	DB::table('users')->where('id', $user_id)->update(['photo'=>$filename]);
-    	}else{};
+    	}else{
+			return url("/changePic");
+		};
+
     	return back();
+
+		}else{
+			return view('profile.pic')->with(['exist'=> 1,'noFileMessage'=> 'Aucun fichier selectionne!']);
+		}
+
 
     }
 }

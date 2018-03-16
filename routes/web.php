@@ -24,7 +24,7 @@ Route::get('/actu', 'ActuController@index')->name('actu');
 Route::get('/friend', 'FriendController@index')->name('friend');
 Route::get('/message', 'MessageController@index')->name('message');
 Route::get('/changePic', function(){
-	return view('profile.pic');
+	return view('profile.pic')->with(['exist'=> 0, 'noFileMessage'=>'']);
 });
 
 Route::post('/uploadPic', 'ProfileController@uploadPic');
