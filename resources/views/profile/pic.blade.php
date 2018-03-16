@@ -14,7 +14,11 @@
                     @endif
                     
                     <p>Telecharger une image:</p>
-
+                    @if($exist == 1)
+                            <div class="alert alert-danger">
+                                <strong>{{ $noFileMessage }}</strong>
+                            </div>
+                    @endif
                     <div class="col-md-2" style="text-align: center; border-radius: 50px;">
                         @if (Auth::user()->photo)
                             <a href="/profilpic/{{Auth::user()->photo}}"><img src="/profilpic/{{Auth::user()->photo}}" width="100px" height="100px" style="border-radius: 10px;"></img></a></br>

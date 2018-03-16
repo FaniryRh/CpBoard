@@ -19,17 +19,31 @@ class ProfileController extends Controller
     public function uploadPic(Request $request){
 
     	$file = $request->file('pic');
+		$size = null;
+		if($file){$size = $file->getClientSize();}else{};
+
+		//SI LE FICHIER EXISTE
     	if ($file){
     	$filename = $file->getClientOriginalName();
-    	// $path = url('profilpic');
-    	$file->move('profilpic', $filename);
+		$size = $file->getClientSize();
 
-    	$user_id = Auth::user()->id;
-    	Storage::delete(url('profilpic/').Auth::user()->photo);
+			//SI LA TAILLE DU FICHIER EST INFERIEUR A 5MB
+			if($size < 5000000){
+			$file->move('profilpic', $filename);
 
-    	DB::table('users')->where('id', $user_id)->update(['photo'=>$filename]);
-    	}else{};
-    	return back();
+			$user_id = Auth::user()->id;
+			Storage::delete(url('profilpic/').Auth::user()->photo);
+
+			DB::table('users')->where('id', $user_id)->update(['photo'=>$filename]);
+			//REVENIR SUR changePic
+			return back();
+			}else{
+				return view('profile.pic')->with(['exist'=> 1,'noFileMessage'=> 'Selectionnez une image moin de 2MB de taille!']);
+			};
+		}else{
+			return view('profile.pic')->with(['exist'=> 1,'noFileMessage'=> 'Aucun fichier']);
+		}
+
 
     }
 }
