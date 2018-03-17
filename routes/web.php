@@ -28,3 +28,7 @@ Route::get('/changePic', function(){
 });
 
 Route::post('/uploadPic', 'ProfileController@uploadPic');
+
+//image
+Route::get('resizeImage', 'ImageController@resizeImage');
+Route::post('resizeImagePost',['as'=>'resizeImagePost','uses'=>'ImageController@resizeImagePost']);
