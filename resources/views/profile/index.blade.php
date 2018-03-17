@@ -68,6 +68,7 @@
                                                        value="{{ Session::get('imageName') }}">
                                                 <br/>
                                                 <button type="submit" class="btn btn-xs btn-danger">Enregistrer l'image</button>
+
                                             </div>
 
                                         </form>
@@ -75,13 +76,11 @@
                                 @endif
                                 {!! Form::open(array('route' => 'resizeImagePost','enctype' => 'multipart/form-data')) !!}
                                 <div class="row">
-                                    {{--<div class="col-md-4">--}}
-                                    {{--<br/>--}}
-                                    {{--{!! Form::text('title', null,array('class' => 'form-control','placeholder'=>'Add Title')) !!}--}}
-                                    {{--</div>--}}
+
                                     <div class="col-md-12">
+                                        <img src="" id="profile-img-tag2" width="200px" />
                                         <br/>
-                                        {!! Form::file('image', array('class' => 'image')) !!}
+                                        {!! Form::file('image', array('class' => 'image', 'id' => 'profile-img2')) !!}
                                     </div>
                                     <div class="col-md-12">
                                         <br/>
@@ -93,8 +92,26 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#profile-img-tag2').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#profile-img2").change(function(){
+            readURL2(this);
+        });
+    </script>
 @endsection

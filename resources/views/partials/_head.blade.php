@@ -11,3 +11,4 @@
 <!-- <link href="{{ url('bootstrap/css/bootstrap-grid.min.css') }}" rel="stylesheet">
 <link href="{{ url('bootstrap/css/bootstrap-reboot.min.css') }}" rel="stylesheet">
 <link href="{{ url('bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet"> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>

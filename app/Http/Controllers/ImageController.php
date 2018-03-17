@@ -37,9 +37,10 @@ class ImageController extends Controller
 
         $image = $request->file('image');
         $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath = public_path('/profilpic');
-        $destinationPath2 = public_path('/images');
+        $destinationPath = public_path('/profilpic/tmp');
+        $destinationPath2 = public_path('/images/tmp');
         $img = Image::make($image->getRealPath());
+        $img->crop(365, 365);
         $img->resize(365, 300, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $input['imagename']);
