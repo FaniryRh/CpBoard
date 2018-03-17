@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/profile/{slug}', 'ProfileController@index');
+Route::get('/profile', 'ProfileController@index');
 Route::get('/dressing', 'DressingController@index')->name('dressing');
 Route::get('/actu', 'ActuController@index')->name('actu');
 Route::get('/friend', 'FriendController@index')->name('friend');
