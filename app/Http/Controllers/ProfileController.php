@@ -20,6 +20,10 @@ class ProfileController extends Controller
 
 		$filename = $request->get('pic');
 		$user_id = Auth::user()->id;
+		$old_pic = Auth::user()->photo;
+		unlink(public_path().'/profilpic/'.$old_pic);
+		unlink(public_path().'/images/'.$old_pic);
+
 		DB::table('users')->where('id', $user_id)->update(['photo'=>$filename]);
 
 		return back();
