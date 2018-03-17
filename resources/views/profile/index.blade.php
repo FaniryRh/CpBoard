@@ -15,7 +15,9 @@
                             <div class="panel-body" style="text-align: center;">
 
                                 @if (Auth::user()->photo)
-                                    <a href="/profilpic/{{Auth::user()->photo}}"><img width="200" src="/profilpic/{{Auth::user()->photo}}" style="border-radius: 5px; border: solid 1px #CCC;
+                                    <a href="/profilpic/{{Auth::user()->photo}}"><img width="200"
+                                                                                      src="/profilpic/{{Auth::user()->photo}}"
+                                                                                      style="border-radius: 5px; border: solid 1px #CCC;
     -moz-box-shadow: 5px 5px 0px #999;
     -webkit-box-shadow: 5px 5px 0px #999;
         box-shadow: 5px 5px 0px #999;"></img></a></br>
@@ -55,33 +57,14 @@
                                         <button type="button" class="close" data-dismiss="alert">×</button>
                                         <strong>{{ $message }}</strong>
                                     </div>
-                                    <div class="row">
-                                        <form action="{{url('/')}}/uploadPic" method="post" enctype="multipart/form-data">
-                                            <div class="col-md-12" style="text-align: center">
-                                                <img style="border-radius: 5px; border: solid 1px #CCC;
-    -moz-box-shadow: 5px 5px 0px #999;
-    -webkit-box-shadow: 5px 5px 0px #999;
-        box-shadow: 5px 5px 0px #999;" src="/profilpic/{{ Session::get('imageName') }}"/>
-                                                <br/>
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                <input style="display: none" type="text" name="pic"
-                                                       value="{{ Session::get('imageName') }}">
-                                                <br/>
-                                                <button type="submit" class="btn btn-xs btn-danger">Enregistrer l'image</button>
-                                            </div>
-
-                                        </form>
-                                    </div>
                                 @endif
                                 {!! Form::open(array('route' => 'resizeImagePost','enctype' => 'multipart/form-data')) !!}
                                 <div class="row">
-                                    {{--<div class="col-md-4">--}}
-                                    {{--<br/>--}}
-                                    {{--{!! Form::text('title', null,array('class' => 'form-control','placeholder'=>'Add Title')) !!}--}}
-                                    {{--</div>--}}
+
                                     <div class="col-md-12">
+                                        <img src="" id="profile-img-tag2" width="200px"/>
                                         <br/>
-                                        {!! Form::file('image', array('class' => 'image')) !!}
+                                        {!! Form::file('image', array('class' => 'image', 'id' => 'profile-img2')) !!}
                                     </div>
                                     <div class="col-md-12">
                                         <br/>
@@ -93,8 +76,57 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
     </div>
+
+
+    <!-- Button trigger modal -->
+    <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+
+    <script type="text/javascript">
+        $('#test').click(function () {
+            $('#exampleModal').modal();
+        });
+
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#profile-img-tag2').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#profile-img2").change(function () {
+            readURL2(this);
+        });
+    </script>
 @endsection
