@@ -32,37 +32,20 @@ class ImageController extends Controller
     {
 
         $this->validate($request, [
-
-            'title' => 'required',
-
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
-
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:5000',
         ]);
 
-
         $image = $request->file('image');
-
         $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-
-
         $destinationPath = public_path('/profilpic');
-
         $img = Image::make($image->getRealPath());
-
-        $img->resize(100, 100, function ($constraint) {
-
+        $img->resize(365, 300, function ($constraint) {
             $constraint->aspectRatio();
-
         })->save($destinationPath . '/' . $input['imagename']);
-
-
         $destinationPath = public_path('/images');
-
         $image->move($destinationPath, $input['imagename']);
 
-
         //$this->postImage->add($input);
-
 
         return back()
             ->with('success', 'Image Upload successful')

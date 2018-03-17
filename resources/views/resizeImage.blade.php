@@ -46,7 +46,7 @@
 
                     <br/>
 
-                    <img src="/images/{{ Session::get('imageName') }}"/>
+                    <img width="200" src="/images/{{ Session::get('imageName') }}"/>
 
                 </div>
 
@@ -56,7 +56,7 @@
 
                     <br/>
 
-                    <img src="/thumbnail/{{ Session::get('imageName') }}"/>
+                    <img src="/profilpic/{{ Session::get('imageName') }}"/>
 
                 </div>
 
