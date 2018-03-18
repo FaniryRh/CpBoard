@@ -31,11 +31,25 @@
                             <label for="name" class="col-md-4 control-label">Last name</label>
 
                             <div class="col-md-6">
-                                <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
+                                <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required >
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('last_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Pseudo: </label>
+
+                            <div class="col-md-6">
+                                <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" required >
+
+                                @if ($errors->has('slug'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('slug') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -53,7 +67,7 @@
 
                                 </select>
                                 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('gender'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('gender') }}</strong>
                                     </span>
