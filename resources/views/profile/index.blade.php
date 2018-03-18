@@ -33,7 +33,8 @@
                                 @endif
 
                                 @if (Auth::user()->photo)
-                                    <a href="/profilpic/{{Auth::user()->photo}}"><img width="200"
+                                    <a href="/profilpic/{{Auth::user()->photo}}">
+                                        <img width="200"
                                                                                       src="/profilpic/{{Auth::user()->photo}}"
                                                                                       style="border-radius: 5px; border: solid 1px #CCC;
     -moz-box-shadow: 5px 5px 0px #999;
@@ -50,11 +51,31 @@
                                     ;"></br>
                                     @endif
                                     </br>
-                                    <a data-toggle="modal" href="#myModal" class="btn btn-primary">Changer photo</a>
+                                    <a data-toggle="modal" href="#myModal" class="btn btn-warning">Changer photo</a>
+                                    <a data-toggle="modal" href="#myModal" class="btn btn-primary">Ajouter</a>
+                                    <a data-toggle="modal" href="#myModal" class="btn btn-danger">Message</a>
 
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Informations</div>
+                            <div class="panel-body">
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
 
                 </div>
             </div>
