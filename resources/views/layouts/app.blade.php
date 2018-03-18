@@ -5,12 +5,13 @@
     @include('partials._head')
 </head>
 
-<body>
+<body id="app-layout">
 	<div id="wrapper">
     	@include('partials._navbar')
         @yield('content')
     </div>
     	@include('partials._footer')
     	@include('partials._javascripts')
+
 </body>
 </html>

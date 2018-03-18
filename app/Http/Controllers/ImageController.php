@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Image;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ImageController extends Controller
 {
@@ -37,10 +39,10 @@ class ImageController extends Controller
 
         $image = $request->file('image');
         $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath = public_path('/profilpic/tmp');
-        $destinationPath2 = public_path('/images/tmp');
+        $destinationPath = public_path('/profilpic');
+        $destinationPath2 = public_path('/images');
         $img = Image::make($image->getRealPath());
-        $img->crop(365, 365);
+        
         $img->resize(365, 300, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $input['imagename']);
@@ -50,9 +52,16 @@ class ImageController extends Controller
             $constraint->aspectRatio();
         })->save($destinationPath2 . '/' . $input['imagename']);
 
-        //$image->move($destinationPath, $input['imagename']);
+        $user_id = Auth::user()->id;
 
-        //$this->postImage->add($input);
+
+        if(Auth::user()->photo){
+        $old_pic = Auth::user()->photo;
+        unlink(public_path().'/profilpic/'.$old_pic);
+        unlink(public_path().'/images/'.$old_pic);
+        }else{};
+
+        DB::table('users')->where('id', $user_id)->update(['photo'=>$input['imagename']]);
 
         return back()
             ->with('success', 'Image Upload successful')
