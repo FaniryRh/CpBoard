@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnsBioUsersTable extends Migration
+class AddTelUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnsBioUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
-            $table->text('bio')->nullable()->after('password');
+        Schema::table('users', function($table) {
+            $table->string('tel', 100)->after('last_name')->nullable();
 
         });
     }
@@ -26,8 +26,9 @@ class AddColumnsBioUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('bio');
+        Schema::table('users', function($table) {
+            $table->dropColumn('tel');
+
         });
     }
 }
