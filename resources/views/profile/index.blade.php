@@ -2,7 +2,11 @@
 
 
 @section('content')
-    <div class="row">
+    <div class="row" style="background: url(/img/bg.png) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;">
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -67,7 +71,7 @@
                             <div class="panel-heading">Informations</div>
                             <div class="panel-body">
                                 <ul>
-                                    <li><span>Nom:</span> {{$user->last_name}}</li>
+                                    <li><span style="text-decoration: solid;">Nom:</span> {{$user->last_name}}</li>
                                     <li><span>Prenom:</span> {{$user->first_name}}</li>
                                     <li><span>Sex:</span> {{$user->gender}}</li>
                                     <li><span>Tel:</span> {{$user->tel}}</li>
