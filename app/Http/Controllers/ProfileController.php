@@ -9,6 +9,11 @@ use App\User;
 
 class ProfileController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
     public function index($slug){
     	$user = User::where('slug', $slug)->firstOrFail();
     	return view('profile.index', compact('user'));

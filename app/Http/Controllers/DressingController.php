@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class DressingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
     	return view('dressing.index', compact('user'));
     }

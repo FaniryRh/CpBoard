@@ -19,7 +19,20 @@
       @else
         <li> 
           <a href="" style="padding-bottom: 0px; ">
-            <img src="{{url('/')}}/profilpic/{{Auth::user()->photo}}" width="30px" height="30px" class="img-rounded">  
+
+            @if (Auth::user()->photo)
+              <img src="{{url('/')}}/profilpic/{{Auth::user()->photo}}" width="30px" height="30px" class="img-rounded">
+            @elseif ($user->gender == "Homme")
+
+              <img src="/img/man.png" width="15px" height="15px"></img style=
+              "border-radius: 10px
+              ;"></br>
+            @else
+              <img src="/img/women.png" width="15px" height="15px"></img style=
+              "border-radius: 10px
+              ;"></br>
+            @endif
+
           </a>
           
         </li>

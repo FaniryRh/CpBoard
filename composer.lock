@@ -4,8 +4,37 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e60e405d9de818cd68ed8f5ef15ce3c",
+    "content-hash": "e33626be135a090f0e46d228d9ffdcc9",
     "packages": [
+        {
+            "name": "bekusc/laravel-auto-validation",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reibengu/laravel-auto-validation.git",
+                "reference": "ebc1c9e3c0bcbd1ee26278ce27d4b46f46f3cd32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reibengu/laravel-auto-validation/zipball/ebc1c9e3c0bcbd1ee26278ce27d4b46f46f3cd32",
+                "reference": "ebc1c9e3c0bcbd1ee26278ce27d4b46f46f3cd32",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bekusc\\Validation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Rei Bengu",
+                    "email": "bengusc@gmail.com"
+                }
+            ],
+            "time": "2017-05-08T16:31:20+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -3195,6 +3224,56 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "watson/validating",
+            "version": "3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dwightwatson/validating.git",
+                "reference": "22edd06d45893f5d4f79c9e901bd7fbce174a79f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dwightwatson/validating/zipball/22edd06d45893f5d4f79c9e901bd7fbce174a79f",
+                "reference": "22edd06d45893f5d4f79c9e901bd7fbce174a79f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": ">=5.3",
+                "illuminate/database": ">=5.3",
+                "illuminate/events": ">=5.3",
+                "illuminate/support": ">=5.3",
+                "illuminate/validation": ">=5.3",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Watson\\Validating\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dwight Watson",
+                    "email": "dwight@studiousapp.com"
+                }
+            ],
+            "description": "Eloquent model validating trait.",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "validation"
+            ],
+            "time": "2017-11-06T21:35:49+00:00"
         }
     ],
     "packages-dev": [

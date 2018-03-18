@@ -8,11 +8,8 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('register') }}" >
                         {{ csrf_field() }}
-
-                        
-
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">First name</label>
 
@@ -124,4 +121,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection
