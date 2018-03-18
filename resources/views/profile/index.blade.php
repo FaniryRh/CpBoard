@@ -32,15 +32,15 @@
                                     </div>
                                 @endif
 
-                                @if (Auth::user()->photo)
-                                    <a href="/profilpic/{{Auth::user()->photo}}">
+                                @if ($user->photo)
+                                    <a href="/images/{{$user->photo}}">
                                         <img width="200"
-                                                                                      src="/profilpic/{{Auth::user()->photo}}"
+                                                                                      src="/profilpic/{{$user->photo}}"
                                                                                       style="border-radius: 5px; border: solid 1px #CCC;
     -moz-box-shadow: 5px 5px 0px #999;
     -webkit-box-shadow: 5px 5px 0px #999;
         box-shadow: 5px 5px 0px #999;"></img></a></br>
-                                @elseif (Auth::user()->gender == "Homme")
+                                @elseif ($user->gender == "Homme")
 
                                     <img src="/img/man.png" width="80px" height="80px"></img style=
                                     "border-radius: 10px
@@ -50,10 +50,12 @@
                                     "border-radius: 10px
                                     ;"></br>
                                     @endif
+
                                     </br>
+
+                                    @if($user->slug == Auth::user()->slug)
                                     <a data-toggle="modal" href="#myModal" class="btn btn-warning">Changer photo</a>
-                                    <a data-toggle="modal" href="#myModal" class="btn btn-primary">Ajouter</a>
-                                    <a data-toggle="modal" href="#myModal" class="btn btn-danger">Message</a>
+                                    @endif
 
                             </div>
                         </div>
