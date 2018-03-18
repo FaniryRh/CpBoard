@@ -33,10 +33,10 @@
                                 @endif
 
                                 @if ($user->photo)
-                                    <a href="/images/{{$user->photo}}">
+                                    <a  href="/images/{{$user->photo}}">
                                         <img width="200"
-                                                                                      src="/profilpic/{{$user->photo}}"
-                                                                                      style="border-radius: 5px; border: solid 1px #CCC;
+                                             src="/profilpic/{{$user->photo}}"
+                                             style="border-radius: 400px; border: solid 1px #CCC;
     -moz-box-shadow: 5px 5px 0px #999;
     -webkit-box-shadow: 5px 5px 0px #999;
         box-shadow: 5px 5px 0px #999;"></img></a></br>
@@ -54,7 +54,7 @@
                                     </br>
 
                                     @if($user->slug == Auth::user()->slug)
-                                    <a data-toggle="modal" href="#myModal" class="btn btn-warning">Changer photo</a>
+                                        <a data-toggle="modal" href="#myModal" class="btn btn-warning">Changer photo</a>
                                     @endif
 
                             </div>
@@ -62,21 +62,23 @@
                     </div>
 
 
-
-
-
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="panel panel-default">
                             <div class="panel-heading">Informations</div>
                             <div class="panel-body">
-
-
+                                <ul>
+                                    <li><span>Nom:</span> {{$user->last_name}}</li>
+                                    <li><span>Prenom:</span> {{$user->first_name}}</li>
+                                    <li><span>Sex:</span> {{$user->gender}}</li>
+                                    <li><span>Tel:</span> {{$user->tel}}</li>
+                                    <li><span>Email:</span> {{$user->email}}</li>
+                                    <li><span>Ville:</span> {{$user->city}}</li>
+                                    <li><span>Pays:</span> {{$user->country}}</li>
+                                </ul>
 
                             </div>
                         </div>
                     </div>
-
-
 
 
                 </div>
@@ -126,7 +128,7 @@
             $('#exampleModal').modal();
         });
 
-        $("#alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
+        $("#alert-dismissible").fadeTo(2000, 500).slideUp(500, function () {
             $("#alert-dismissible").alert('close');
         });
 

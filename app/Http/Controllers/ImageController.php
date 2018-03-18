@@ -43,12 +43,12 @@ class ImageController extends Controller
         $destinationPath2 = public_path('/images');
         $img = Image::make($image->getRealPath());
         
-        $img->resize(365, 300, function ($constraint) {
+        $img->resize(500, 500, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath . '/' . $input['imagename']);
         //$destinationPath = public_path('/images');
         $img2 = Image::make($image->getRealPath());
-        $img2->resize(500, 500, function ($constraint) {
+        $img2->resize(1000, 1000, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath2 . '/' . $input['imagename']);
 

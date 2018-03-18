@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class FriendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
     	return view('friend.index', compact('user'));
     }
